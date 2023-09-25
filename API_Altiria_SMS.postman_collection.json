@@ -1,0 +1,2102 @@
+{
+	"info": {
+		"_postman_id": "1a518374-c7ea-4237-9245-4bddb3aa3cba",
+		"name": "API_Altiria_SMS",
+		"description": "Colección de ejemplos de peticiones de las API's de Altiria.\n\nPara poder ejecutar esta colección de peticiones satisfactoriamente, es necesario configurar los valores parametrizados en la sección \"Environments\" del menú lateral izquierdo. Para esto, primero habrá que importar el archivo **API_Altiria_SMS.postman_environment.json**. A continuación, será necesario fijar el valor deseado en la columna **CURRENT VALUE** para cada uno de los campos. En el caso del parámetro **URL_BASE**, no es necesario realizar ninguna modificación salvo que quiera realizarse la petición sin SSL. Para que estos valores se hagan efectivos se debe activar el checkbox \"Set active\" en las variables importadas.\n\nNo obstante, si no se desea importar este archivo, tendrán que sustituirse las parametrizaciones realizadas en las peticiones una a una manualmente. Estas se identifican fácilmente al mostrarse entre doble llave. En cualquier caso, no recomendamos esta opción.\n\nEn esta colección se prueba cada característica por separado con el objetivo de simplificar al máximo cada prueba. Sin embargo, pueden combinarse los diferentes parámetros según la necesidad. Por ejemplo, para realizar un envío de SMS concatenado con codificación unicode y solicitando la confirmación de entrega, utilizaremos los parámetros \"concat\", \"encoding\" y \"ack\" simultáneamente.\n\nSi durante las pruebas se presentan problemas, se recomienda revisar [el manual técnico de la API en cuestión.](https://www.altiria.com/api-envio-sms/#documentacion-tecnica-para-sms-api).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28510767"
+	},
+	"item": [
+		{
+			"name": "HTTP",
+			"item": [
+				{
+					"name": "Envío de SMS - Comando sendsms",
+					"item": [
+						{
+							"name": "Envío de SMS sencillo",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded;charset=utf-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cmd",
+											"value": "sendsms",
+											"description": "Comando de envío de SMS",
+											"type": "text"
+										},
+										{
+											"key": "login",
+											"value": "{{login}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "passwd",
+											"value": "{{passwd}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "dest",
+											"value": "{{dest}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Mensaje de prueba",
+											"description": "Texto del SMS",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/http",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"http"
+									]
+								},
+								"description": "Ejemplo de un envío de SMS sencillo."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS sencillo - APIKEY/APISECRET",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded;charset=utf-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cmd",
+											"value": "sendsms",
+											"description": "Comando de envío de SMS",
+											"type": "text"
+										},
+										{
+											"key": "apiKey",
+											"value": "{{apikey}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "apiSecret",
+											"value": "{{apisecret}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "dest",
+											"value": "{{dest}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Mensaje de prueba",
+											"description": "Texto del SMS",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/http",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"http"
+									]
+								},
+								"description": "Ejemplo de envío de SMS sencillo utilizando APIKEY/APISECRET."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS con remitente",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded;charset=utf-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cmd",
+											"value": "sendsms",
+											"description": "Comando de envío de SMS",
+											"type": "text"
+										},
+										{
+											"key": "login",
+											"value": "{{login}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "passwd",
+											"value": "{{passwd}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "dest",
+											"value": "{{dest}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Mensaje de prueba",
+											"description": "Texto del SMS",
+											"type": "text"
+										},
+										{
+											"key": "senderId",
+											"value": "{{senderId}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/http",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"http"
+									]
+								},
+								"description": "Ejemplo de envío de SMS con remitente."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS a varios destinos",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded;charset=utf-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cmd",
+											"value": "sendsms",
+											"description": "Comando de envío de SMS",
+											"type": "text"
+										},
+										{
+											"key": "login",
+											"value": "{{login}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "passwd",
+											"value": "{{passwd}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "dest",
+											"value": "{{dest}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "dest",
+											"value": "{{dest2}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Mensaje de prueba",
+											"description": "Texto del SMS",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/http",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"http"
+									]
+								},
+								"description": "Ejemplo de envío de SMS a varios destinos."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS concatenado",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded;charset=utf-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cmd",
+											"value": "sendsms",
+											"description": "Comando de envío de SMS",
+											"type": "text"
+										},
+										{
+											"key": "login",
+											"value": "{{login}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "passwd",
+											"value": "{{passwd}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "dest",
+											"value": "{{dest}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet purus a orci egestas, a porta erat lobortis. Suspendisse vulputate vitae quam vel convallis.",
+											"description": "Texto del SMS",
+											"type": "text"
+										},
+										{
+											"key": "concat",
+											"value": "true",
+											"description": "Necesario si el texto supera 160 caracteres (70 en unicode).",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/http",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"http"
+									]
+								},
+								"description": "Ejemplo de envío de SMS concatenado."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS unicode",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded;charset=utf-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cmd",
+											"value": "sendsms",
+											"description": "Comando de envío de SMS",
+											"type": "text"
+										},
+										{
+											"key": "login",
+											"value": "{{login}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "passwd",
+											"value": "{{passwd}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "dest",
+											"value": "{{dest}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Mensaje de prueba unicode: áéı́óú€Ö",
+											"description": "Texto del SMS",
+											"type": "text"
+										},
+										{
+											"key": "encoding",
+											"value": "unicode",
+											"description": "Si no es enviado, los caracteres especiales serán sustituidos por ? y las vocales serán recibidas sin tilde.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/http",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"http"
+									]
+								},
+								"description": "Ejemplo de envío de SMS con codificación unicode."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS con confirmación de entrega",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded;charset=utf-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cmd",
+											"value": "sendsms",
+											"description": "Comando de envío de SMS",
+											"type": "text"
+										},
+										{
+											"key": "login",
+											"value": "{{login}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "passwd",
+											"value": "{{passwd}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "dest",
+											"value": "{{dest}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Mensaje de prueba",
+											"description": "Texto del SMS",
+											"type": "text"
+										},
+										{
+											"key": "ack",
+											"value": "true",
+											"description": "Solicitud de confirmación de entrega.",
+											"type": "text"
+										},
+										{
+											"key": "idAck",
+											"value": "{{$guid}}",
+											"description": "Código identificativo para la confirmación de entrega.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/http",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"http"
+									]
+								},
+								"description": "Ejemplo de envío de SMS con confirmación de entrega."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS certificado",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded;charset=utf-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cmd",
+											"value": "sendsms",
+											"description": "Comando de envío de SMS",
+											"type": "text"
+										},
+										{
+											"key": "login",
+											"value": "{{login}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "passwd",
+											"value": "{{passwd}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "dest",
+											"value": "{{dest}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Mensaje de prueba",
+											"description": "Texto dell SMS",
+											"type": "text"
+										},
+										{
+											"key": "certDelivery",
+											"value": "true",
+											"description": "Este servicio tiene\nsobrecoste y solo está disponible en Europa. Si tiene dudas contacte con\ncomercial@altiria.com.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/http",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"http"
+									]
+								},
+								"description": "Ejemplo de envío de SMS solicitando la certificación de entrega mediante un documento digital con sello certificado de tiempo."
+							},
+							"response": []
+						}
+					],
+					"description": "Esta carpeta contiene los diferentes casos de uso de envío de SMS a través del API HTTP."
+				},
+				{
+					"name": "Consulta del crédito - Comando getcredit",
+					"item": [
+						{
+							"name": "Consulta de crédito",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_BASE}}/api/http?cmd=getcredit&login={{login}}&passwd={{passwd}}",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"http"
+									],
+									"query": [
+										{
+											"key": "cmd",
+											"value": "getcredit",
+											"description": "Comando para consultar el crédito disponible"
+										},
+										{
+											"key": "login",
+											"value": "{{login}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\"."
+										},
+										{
+											"key": "passwd",
+											"value": "{{passwd}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\"."
+										}
+									]
+								},
+								"description": "Ejemplo de consulta de crédito a través del método GET."
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta de crédito - APIKEY/APISECRET",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_BASE}}/api/http?cmd=getcredit&apikey={{apikey}}&apisecret={{apisecret}}",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"http"
+									],
+									"query": [
+										{
+											"key": "cmd",
+											"value": "getcredit",
+											"description": "Comando para consultar el crédito disponible"
+										},
+										{
+											"key": "apikey",
+											"value": "{{apikey}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\"."
+										},
+										{
+											"key": "apisecret",
+											"value": "{{apisecret}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\"."
+										}
+									]
+								},
+								"description": "Ejemplo de consulta de crédito a través del método GET utilizando APIKEY/APISECRET."
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta de crédito",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded;charset=utf-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cmd",
+											"value": "getcredit",
+											"description": "Comando para consultar el crédito disponible",
+											"type": "text"
+										},
+										{
+											"key": "login",
+											"value": "{{login}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "passwd",
+											"value": "{{passwd}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/http",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"http"
+									]
+								},
+								"description": "Ejemplo de consulta de crédito a través del método POST."
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta de crédito - APIKEY/APISECRET",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded;charset=utf-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cmd",
+											"value": "getcredit",
+											"description": "Comando para consultar el crédito disponible",
+											"type": "text"
+										},
+										{
+											"key": "apikey",
+											"value": "{{apikey}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										},
+										{
+											"key": "apisecret",
+											"value": "{{apisecret}}",
+											"description": "Este valor debe ser parametrizado desde la sección \"environments\".",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/http",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"http"
+									]
+								},
+								"description": "Ejemplo de consulta de crédito a través del método POST utilizando APIKEY/APISECRET."
+							},
+							"response": []
+						}
+					],
+					"description": "Esta carpeta contiene las diferentes posibilidades para consultar el crédito a través del API HTTP."
+				}
+			],
+			"description": "Esta carpeta contiene todos los ejemplos del API HTTP."
+		},
+		{
+			"name": "REST",
+			"item": [
+				{
+					"name": "Envío de SMS - Endpoint sendSms",
+					"item": [
+						{
+							"name": "Envío de SMS sencillo",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"destination\": [\"{{dest}}\"],\n\"message\":{\n    \"msg\":\"Mensaje de prueba\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSms",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSms"
+									]
+								},
+								"description": "Ejemplo de envío de SMS sencillo."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS sencillo - APIKEY/APISECRET",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"apiKey\":\"{{apikey}}\",\n    \"apiSecret\":\"{{apisecret}}\"\n    },\n\"destination\": [\"{{dest}}\"],\n\"message\":{\n    \"msg\":\"Mensaje de prueba\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSms",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSms"
+									]
+								},
+								"description": "Ejemplo de envío de SMS sencillo utilizando APIKEY/APISECRET."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS con remitente",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"destination\": [\"{{dest}}\"],\n\"message\":{\n    \"msg\":\"Mensaje de prueba\",\n    \"senderId\":\"{{senderId}}\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSms",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSms"
+									]
+								},
+								"description": "Ejemplo de envío de SMS con remitente."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS a varios destinos",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"destination\": [\"{{dest}}\", \"{{dest2}}\"],\n\"message\":{\n    \"msg\":\"Mensaje de prueba\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSms",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSms"
+									]
+								},
+								"description": "Ejemplo de envío de SMS a una lista de destinos."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS concatenado",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"destination\": [\"{{dest}}\"],\n\"message\":{\n    \"msg\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet purus a orci egestas, a porta erat lobortis. Suspendisse vulputate vitae quam vel convallis.\",\n    \"concat\": \"true\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSms",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSms"
+									]
+								},
+								"description": "Ejemplo de envío de SMS concatenado."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS unicode",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"destination\": [\"{{dest}}\"],\n\"message\":{\n    \"msg\":\"Mensaje de prueba unicode: áéı́óú€Ö\",\n    \"encoding\": \"unicode\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSms",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSms"
+									]
+								},
+								"description": "Ejemplo de envío de SMS con codificación unicode."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS con confirmación de entrega",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"destination\": [\"{{dest}}\"],\n\"message\":{\n    \"msg\":\"Mensaje de prueba\",\n    \"ack\": \"true\",\n    \"idAck\": \"{{$guid}}\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSms",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSms"
+									]
+								},
+								"description": "Ejemplo de envío de SMS solicitando confirmación de entrega."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS certificado",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"destination\": [\"{{dest}}\"],\n\"message\":{\n    \"msg\":\"Mensaje de prueba\",\n    \"certDelivery\": \"true\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSms",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSms"
+									]
+								},
+								"description": "Ejemplo de envío de SMS solicitando la certificación de entrega mediante un documento digital con sello certificado de tiempo."
+							},
+							"response": []
+						}
+					],
+					"description": "Esta carpeta contiene los diferentes casos de uso de envío de SMS a través del API REST."
+				},
+				{
+					"name": "Consulta del crédito - Endpoint getCredit",
+					"item": [
+						{
+							"name": "Consulta de crédito",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/getCredit",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"getCredit"
+									]
+								},
+								"description": "Ejemplo de consulta de crédito."
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta de crédito - APIKEY/APISECRET",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"apikey\":\"{{apikey}}\",\n    \"apisecret\":\"{{apisecret}}\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/getCredit",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"getCredit"
+									]
+								},
+								"description": "Ejemplo de consulta de crédito utilizando APIKEY/APISECRET."
+							},
+							"response": []
+						}
+					],
+					"description": "Esta carpeta contiene las diferentes posibilidades para consultar el crédito a través del API REST."
+				},
+				{
+					"name": "Envío de SMS múltiple - Endpoint sendSmsMulti",
+					"item": [
+						{
+							"name": "Envío de SMS múltiple sencillo",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"messages\": [\n        {\"msg\": \"Mensaje de prueba 1\", \"destination\": \"{{dest}}\"},\n        {\"msg\": \"Mensaje de prueba 2\", \"destination\": \"{{dest2}}\"}\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSmsMulti",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSmsMulti"
+									]
+								},
+								"description": "Ejemplo básico de envío de SMS múltiple."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS múltiple sencillo - APIKEY/APISECRET",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"apikey\":\"{{apikey}}\",\n    \"apisecret\":\"{{apisecret}}\"\n    },\n\"messages\": [\n        {\"msg\": \"Mensaje de prueba 1\", \"destination\": \"{{dest}}\"},\n        {\"msg\": \"Mensaje de prueba 2\", \"destination\": \"{{dest2}}\"}\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSmsMulti",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSmsMulti"
+									]
+								},
+								"description": "Ejemplo básico de envío de SMS múltiple utilizando APIKEY/APISECRET."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS múltiple con remitente",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"messages\": [\n        {\"msg\": \"Mensaje de prueba 1\", \"destination\": \"{{dest}}\", \"sender_id\": \"{{senderId}}\"},\n        {\"msg\": \"Mensaje de prueba 2\", \"destination\": \"{{dest2}}\", \"sender_id\": \"{{senderId}}\"}\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSmsMulti",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSmsMulti"
+									]
+								},
+								"description": "Ejemplo de envío de SMS multiple con remitente."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS múltiple concatenado",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"messages\": [\n        {\"msg\": \"1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet purus a orci egestas, a porta erat lobortis. Suspendisse vulputate vitae quam vel convallis.\", \"destination\": \"{{dest}}\", \"concat\": \"true\"},\n        {\"msg\": \"2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet purus a orci egestas, a porta erat lobortis. Suspendisse vulputate vitae quam vel convallis.\", \"destination\": \"{{dest2}}\", \"concat\": \"true\"}\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSmsMulti",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSmsMulti"
+									]
+								},
+								"description": "Ejemplo de envío de SMS multiple concatenados."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS múltiple unicode",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"messages\": [\n        {\"msg\": \"Mensaje de prueba 1 unicode: áéı́óú€Ö\", \"destination\": \"{{dest}}\", \"encoding\": \"unicode\"},\n        {\"msg\": \"Mensaje de prueba 2 unicode: áéı́óú€Ö\", \"destination\": \"{{dest2}}\", \"encoding\": \"unicode\"}\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSmsMulti",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSmsMulti"
+									]
+								},
+								"description": "Ejemplo de envío de SMS multiple con codificación unicode."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS múltiple con confirmación de entrega",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"messages\": [\n        {\"msg\": \"Mensaje de prueba 1\", \"destination\": \"{{dest}}\", \"ack\": \"true\", \"id_ack\": \"{{$guid}}\"},\n        {\"msg\": \"Mensaje de prueba 2\", \"destination\": \"{{dest2}}\", \"ack\": \"true\", \"id_ack\": \"{{$guid}}\"}\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSmsMulti",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSmsMulti"
+									]
+								},
+								"description": "Ejemplo de envío de SMS multiple solicitando confirmación de entrega."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS múltiple certificado",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"credentials\":{\n    \"login\":\"{{login}}\",\n    \"passwd\":\"{{passwd}}\"\n    },\n\"messages\": [\n        {\"msg\": \"Mensaje de prueba 1\", \"destination\": \"{{dest}}\", \"cert_delivery\": true},\n        {\"msg\": \"Mensaje de prueba 2\", \"destination\": \"{{dest2}}\", \"cert_delivery\": true}\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/apirest/ws/sendSmsMulti",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"apirest",
+										"ws",
+										"sendSmsMulti"
+									]
+								},
+								"description": "Ejemplo de envío de SMS multiple solicitando la certificación de entrega mediante un documento digital con sello certificado de tiempo."
+							},
+							"response": []
+						}
+					],
+					"description": "Esta carpeta contiene los distintos casos de uso utilizando el servicio \"sendSmsMulti\". Este endpoint permite enviar una lista de SMS diferentes cada cual a un destino distinto.\n\nPara simplificar al máximo, en los siguientes ejemplos se ha utilizado solamente dos envíos por petición. Además, cada característica a probar en cada petición se ha aplicado a ambos envíos. Esto no tiene por qué ser así al tratarse de envíos independientes.\n\nSi se pretende realizar envíos masivos a través de este servicio, por favor consulta al soporte técnico de  \nAltiria ([soporte@altiria.com](mailto:soporte@altiria.com)) el lı́mite máximo permitido para no sobrepasarlo."
+				}
+			],
+			"description": "Esta carpeta contiene todos los ejemplos del API REST."
+		},
+		{
+			"name": "SOAP",
+			"item": [
+				{
+					"name": "Envío de SMS - Servicio web sendSms",
+					"item": [
+						{
+							"name": "Envío de SMS sencillo",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <TextMessageRequest xmlns=\"http://www.altiria.net/api/soap\">\n            <credentials>\n                <login>{{login}}</login>\n                <passwd>{{passwd}}</passwd>\n            </credentials>\n            <destination>{{dest}}</destination>\n            <message>\n                <msg>Mensaje de prueba</msg>\n            </message>\n        </TextMessageRequest>\n    </soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS sencillo."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS sencillo - APIKEY/APISECRET",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <TextMessageRequest xmlns=\"http://www.altiria.net/api/soap\">\n            <credentials>\n                <apiKey>{{apikey}}</apiKey>\n                <apiSecret>{{apisecret}}</apiSecret>\n            </credentials>\n            <destination>{{dest}}</destination>\n            <message>\n                <msg>Mensaje de prueba</msg>\n            </message>\n        </TextMessageRequest>\n    </soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS sencillo utilizando APIKEY/APISECRET."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS con remitente",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <TextMessageRequest xmlns=\"http://www.altiria.net/api/soap\">\n            <credentials>\n                <login>{{login}}</login>\n                <passwd>{{passwd}}</passwd>\n            </credentials>\n            <destination>{{dest}}</destination>\n            <message>\n                <msg>Mensaje de prueba</msg>\n                <senderId>{{senderId}}</senderId>\n            </message>\n        </TextMessageRequest>\n    </soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS con remitente."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS a varios destinos",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <TextMessageRequest xmlns=\"http://www.altiria.net/api/soap\">\n            <credentials>\n                <login>{{login}}</login>\n                <passwd>{{passwd}}</passwd>\n            </credentials>\n            <destination>{{dest}}</destination>\n            <destination>{{dest2}}</destination>\n            <message>\n                <msg>Mensaje de prueba</msg>\n            </message>\n        </TextMessageRequest>\n    </soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS a varios destinos."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS concatenado",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <TextMessageRequest xmlns=\"http://www.altiria.net/api/soap\">\n            <credentials>\n                <login>{{login}}</login>\n                <passwd>{{passwd}}</passwd>\n            </credentials>\n            <destination>{{dest}}</destination>\n            <message>\n                <msg>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet purus a orci egestas, a porta erat lobortis. Suspendisse vulputate vitae quam vel convallis.</msg>\n                <concat>true</concat>\n            </message>\n        </TextMessageRequest>\n    </soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS concatenado."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS unicode",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <TextMessageRequest xmlns=\"http://www.altiria.net/api/soap\">\n            <credentials>\n                <login>{{login}}</login>\n                <passwd>{{passwd}}</passwd>\n            </credentials>\n            <destination>{{dest}}</destination>\n            <message>\n                <msg>Mensaje de prueba unicode: áéı́óú€Ö</msg>\n                <encoding>unicode</encoding>\n            </message>\n        </TextMessageRequest>\n    </soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS con codificación unicode."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS con confirmación de entrega",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <TextMessageRequest xmlns=\"http://www.altiria.net/api/soap\">\n            <credentials>\n                <login>{{login}}</login>\n                <passwd>{{passwd}}</passwd>\n            </credentials>\n            <destination>{{dest}}</destination>\n            <message>\n                <msg>Mensaje de prueba</msg>\n                <ack>true</ack>\n\t\t\t\t<idAck>{{$guid}}</idAck>\n            </message>\n        </TextMessageRequest>\n    </soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS solicitando confirmación de entrega."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS certificado",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <TextMessageRequest xmlns=\"http://www.altiria.net/api/soap\">\n            <credentials>\n                <login>{{login}}</login>\n                <passwd>{{passwd}}</passwd>\n            </credentials>\n            <destination>{{dest}}</destination>\n            <message>\n                <msg>Mensaje de prueba</msg>\n                <certDelivery>true</certDelivery>\n            </message>\n        </TextMessageRequest>\n    </soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS solicitando la certificación de entrega mediante un documento digital con sello certificado de tiempo."
+							},
+							"response": []
+						}
+					],
+					"description": "Esta carpeta contiene los diferentes casos de uso de envío de SMS a través del API SOAP."
+				},
+				{
+					"name": "Consulta de crédito - Servicio web getCredit",
+					"item": [
+						{
+							"name": "Consulta de crédito",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <CreditRequest xmlns=\"http://www.altiria.net/api/soap\">\n            <credentials>\n                <login>{{login}}</login>\n                <passwd>{{passwd}}</passwd>\n            </credentials>\n        </CreditRequest>\n    </soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de consulta de crédito."
+							},
+							"response": []
+						},
+						{
+							"name": "Consulta de crédito - APIKEY/APISECRET",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <soap:Body>\n        <CreditRequest xmlns=\"http://www.altiria.net/api/soap\">\n            <credentials>\n                <apiKey>{{apikey}}</apiKey>\n                <apiSecret>{{apisecret}}</apiSecret>\n            </credentials>\n        </CreditRequest>\n    </soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de consulta de crédito utilizando APIKEY/APISECRET."
+							},
+							"response": []
+						}
+					],
+					"description": "Esta carpeta contiene las diferentes posibilidades para consultar el crédito a través del API SOAP."
+				},
+				{
+					"name": "Envío de SMS múltiple - Servicio web sendSmsMulti",
+					"item": [
+						{
+							"name": "Envío de SMS múltiple sencillo",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\t<soap:Body>\n\t\t<TextMessagesRequest xmlns=\"http://www.altiria.net/api/soap\">\n\t\t\t<credentials>\n\t\t\t\t<login>{{login}}</login>\n\t\t\t\t<passwd>{{passwd}}</passwd>\n\t\t\t</credentials>\n\t\t\t<messages>\n\t\t\t\t<msg>Mensaje de prueba 1</msg>\n\t\t\t\t<destination>{{dest}}</destination>\n\t\t\t</messages>\n\t\t\t<messages>\n\t\t\t\t<msg>Mensaje de prueba 2</msg>\n\t\t\t\t<destination>{{dest2}}</destination>\n\t\t\t</messages>\n\t\t</TextMessagesRequest>\n\t</soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo básico de envío de SMS múltiple."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS múltiple sencillo - APIKEY/APISECRET",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\t<soap:Body>\n\t\t<TextMessagesRequest xmlns=\"http://www.altiria.net/api/soap\">\n\t\t\t<credentials>\n\t\t\t\t<apiKey>{{apikey}}</apiKey>\n\t\t\t\t<apiSecret>{{apisecret}}</apiSecret>\n\t\t\t</credentials>\n\t\t\t<messages>\n\t\t\t\t<msg>Mensaje de prueba 1</msg>\n\t\t\t\t<destination>{{dest}}</destination>\n\t\t\t</messages>\n\t\t\t<messages>\n\t\t\t\t<msg>Mensaje de prueba 2</msg>\n\t\t\t\t<destination>{{dest2}}</destination>\n\t\t\t</messages>\n\t\t</TextMessagesRequest>\n\t</soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo básico de envío de SMS múltiple utilizando APIKEY/APISECRET."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS múltiple con remitente",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\t<soap:Body>\n\t\t<TextMessagesRequest xmlns=\"http://www.altiria.net/api/soap\">\n\t\t\t<credentials>\n\t\t\t\t<login>{{login}}</login>\n\t\t\t\t<passwd>{{passwd}}</passwd>\n\t\t\t</credentials>\n\t\t\t<messages>\n\t\t\t\t<msg>Mensaje de prueba 1</msg>\n\t\t\t\t<destination>{{dest}}</destination>\n                <senderId>{{senderId}}</senderId>\n\t\t\t</messages>\n\t\t\t<messages>\n\t\t\t\t<msg>Mensaje de prueba 2</msg>\n\t\t\t\t<destination>{{dest2}}</destination>\n                <senderId>{{senderId}}</senderId>\n\t\t\t</messages>\n\t\t</TextMessagesRequest>\n\t</soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS multiple con remitente."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS múltiple concatenado",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\t<soap:Body>\n\t\t<TextMessagesRequest xmlns=\"http://www.altiria.net/api/soap\">\n\t\t\t<credentials>\n\t\t\t\t<login>{{login}}</login>\n\t\t\t\t<passwd>{{passwd}}</passwd>\n\t\t\t</credentials>\n\t\t\t<messages>\n\t\t\t\t<msg>1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet purus a orci egestas, a porta erat lobortis. Suspendisse vulputate vitae quam vel convallis.</msg>\n\t\t\t\t<destination>{{dest}}</destination>\n                <concat>true</concat>\n\t\t\t</messages>\n\t\t\t<messages>\n\t\t\t\t<msg>2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet purus a orci egestas, a porta erat lobortis. Suspendisse vulputate vitae quam vel convallis.</msg>\n\t\t\t\t<destination>{{dest2}}</destination>\n                <concat>true</concat>\n\t\t\t</messages>\n\t\t</TextMessagesRequest>\n\t</soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS multiple concatenados."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS múltiple unicode",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\t<soap:Body>\n\t\t<TextMessagesRequest xmlns=\"http://www.altiria.net/api/soap\">\n\t\t\t<credentials>\n\t\t\t\t<login>{{login}}</login>\n\t\t\t\t<passwd>{{passwd}}</passwd>\n\t\t\t</credentials>\n\t\t\t<messages>\n\t\t\t\t<msg>Mensaje de prueba 1 unicode: áéı́óú€Ö</msg>\n\t\t\t\t<destination>{{dest}}</destination>\n                <encoding>unicode</encoding>\n\t\t\t</messages>\n\t\t\t<messages>\n\t\t\t\t<msg>Mensaje de prueba 2 unicode: áéı́óú€Ö</msg>\n\t\t\t\t<destination>{{dest2}}</destination>\n                <encoding>unicode</encoding>\n\t\t\t</messages>\n\t\t</TextMessagesRequest>\n\t</soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS multiple con codificación unicode."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS múltiple con confirmación de entrega",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\t<soap:Body>\n\t\t<TextMessagesRequest xmlns=\"http://www.altiria.net/api/soap\">\n\t\t\t<credentials>\n\t\t\t\t<login>{{login}}</login>\n\t\t\t\t<passwd>{{passwd}}</passwd>\n\t\t\t</credentials>\n\t\t\t<messages>\n\t\t\t\t<msg>Mensaje de prueba 1</msg>\n\t\t\t\t<destination>{{dest}}</destination>\n                <ack>true</ack>\n\t\t\t\t<idAck>{{$guid}}</idAck>\n\t\t\t</messages>\n\t\t\t<messages>\n\t\t\t\t<msg>Mensaje de prueba 2</msg>\n\t\t\t\t<destination>{{dest2}}</destination>\n                <ack>true</ack>\n\t\t\t\t<idAck>{{$guid}}</idAck>\n\t\t\t</messages>\n\t\t</TextMessagesRequest>\n\t</soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS multiple solicitando confirmación de entrega."
+							},
+							"response": []
+						},
+						{
+							"name": "Envío de SMS múltiple certificado",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/soap+xml;charset=UTF-8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?> \n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n\t<soap:Body>\n\t\t<TextMessagesRequest xmlns=\"http://www.altiria.net/api/soap\">\n\t\t\t<credentials>\n\t\t\t\t<login>{{login}}</login>\n\t\t\t\t<passwd>{{passwd}}</passwd>\n\t\t\t</credentials>\n\t\t\t<messages>\n\t\t\t\t<msg>Mensaje de prueba 1</msg>\n\t\t\t\t<destination>{{dest}}</destination>\n                <certDelivery>true</certDelivery>\n\t\t\t</messages>\n\t\t\t<messages>\n\t\t\t\t<msg>Mensaje de prueba 2</msg>\n\t\t\t\t<destination>{{dest2}}</destination>\n                <certDelivery>true</certDelivery>\n\t\t\t</messages>\n\t\t</TextMessagesRequest>\n\t</soap:Body>\n</soap:Envelope>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_BASE}}/api/ws/soap",
+									"host": [
+										"{{URL_BASE}}"
+									],
+									"path": [
+										"api",
+										"ws",
+										"soap"
+									]
+								},
+								"description": "Ejemplo de envío de SMS multiple solicitando la certificación de entrega mediante un documento digital con sello certificado de tiempo."
+							},
+							"response": []
+						}
+					],
+					"description": "Esta carpeta contiene los distintos casos de uso utilizando el servicio \"sendSmsMulti\". Este servicio web permite enviar una lista de SMS diferentes cada cual a un destino distinto.\n\nPara simplificar al máximo, en los siguientes ejemplos se ha utilizado solamente dos envíos por petición. Además, cada característica a probar en cada petición se ha aplicado a ambos envíos. Esto no tiene por qué ser así al tratarse de envíos independientes.\n\nSi se pretende realizar envíos masivos a través de este servicio, por favor consulta al soporte técnico de  \nAltiria ([soporte@altiria.com](mailto:soporte@altiria.com)) el lı́mite máximo permitido para no sobrepasarlo."
+				}
+			],
+			"description": "Esta carpeta contiene todos los ejemplos del API SOAP."
+		}
+	]
+}
