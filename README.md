@@ -1,7 +1,8 @@
-# Colección Postman para la APIs de Altiria
+# Colección Postman para SMS API Altiria
 ![](https://img.shields.io/badge/version-1.0.0-blue.svg)
 
-Este repositorio contiene la colección de Postman para las APIs de Altiria. Está constituido por dos ficheros: <br/>
+Este repositorio contiene la colección de Postman para el envío de SMS a través de las APIs de Altiria.<br/>
+Está constituido por dos ficheros: <br/>
 - **API_Altiria_SMS.postman_collection.json**: contiene la colección de Postman y su documentación.<br/>
 - **API_Altiria_SMS.postman_environment.json**: contiene las variables de entorno.
 
